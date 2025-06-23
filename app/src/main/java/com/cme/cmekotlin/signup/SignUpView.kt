@@ -165,9 +165,13 @@ fun SignUpView(
                 }
 
                 Spacer(Modifier.height(12.dp))
-
-                Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-                    Text("Already have an account?", color = Color.Gray, fontSize = 12.sp)
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 24.dp),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text("Already have an account?", color = Color.Gray)
                     Spacer(Modifier.width(4.dp))
                     Text("Sign in", color = softGreen, fontSize = 12.sp, fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.clickable { onSignInClick() })

@@ -1,6 +1,6 @@
 package com.cme.cmekotlin.auth
 
-import com.cme.projectcme.model.StateConfig
+import com.cme.cmekotlin.model.StateConfig
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await

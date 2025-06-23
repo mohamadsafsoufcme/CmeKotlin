@@ -10,8 +10,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.cme.cmekotlin.auth.ForgotPasswordViewModel
-import com.cme.projectcme.signin.forgotpassword.ForgotPasswordViewModel
 
 @Composable
 fun ForgotPasswordView(

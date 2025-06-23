@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "458635855050",
+    "project_id": "cmeproject2025",
+    "storage_bucket": "cmeproject2025.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458635855050:android:356a43d9ef78d33570e033",
+        "android_client_info": {
+          "package_name": "com.cme.cmekotlin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGXzaL9pC7nYcVmFq1ZXvxgTcRHPgzRnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458635855050:android:a6405e82b19c188870e033",
+        "android_client_info": {
+          "package_name": "com.cme.projectcme"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGXzaL9pC7nYcVmFq1ZXvxgTcRHPgzRnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
