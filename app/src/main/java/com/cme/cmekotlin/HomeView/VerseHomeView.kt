@@ -3,15 +3,18 @@ package com.cme.cmekotlin.HomeView
 import MatchupSection
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.cme.cmekotlin.components.*
+import com.cme.cmekotlin.model.LeagueInfo
 import com.cme.cmekotlin.model.Matchup
 import com.cme.cmekotlin.model.TeamStats
-import com.cme.cmekotlin.model.LeagueInfo
 
 val sampleLeagues = listOf(
     LeagueInfo("VerseFantasyCME", "2/4 teams synced", "0 mins ago"),
@@ -39,15 +42,39 @@ fun LeagueHomeScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
-            .padding(horizontal = 0.dp, vertical = 0.dp)
     ) {
         Spacer(Modifier.height(8.dp))
-        CoinHeader(balance = "3,000")
-        Spacer(modifier = Modifier.height(12.dp))
-        LeagueList(leagues = sampleLeagues, onAddLeague = { /* TODO: handle add */ })
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp)
+                .clip(RoundedCornerShape(32.dp))
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFF191E25),
+                            Color(0xFF222A33),
+                            Color(0xFF18181C)
+                        )
+                    ),
+                    shape = RoundedCornerShape(32.dp)
+                )
+                .padding(vertical = 20.dp, horizontal = 12.dp)
+        ) {
+            Column {
+                CoinHeader(balance = "3,000")
+                Spacer(modifier = Modifier.height(12.dp))
+                LeagueList(leagues = sampleLeagues, onAddLeague = { /* TODO: handle add */ })
+            }
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
+
         MatchupSection(title = "Matchups (Week 8)", matchups = sampleMatchups)
+
         Spacer(modifier = Modifier.weight(1f))
+
         BottomNavBar()
     }
 }

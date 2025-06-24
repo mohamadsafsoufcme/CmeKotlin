@@ -9,9 +9,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.cme.cmekotlin.model.Matchup
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import com.cme.cmekotlin.model.Matchup
 
 @Composable
 fun MatchupSection(title: String, matchups: List<Matchup>) {
@@ -31,7 +31,6 @@ fun MatchupSection(title: String, matchups: List<Matchup>) {
                 .padding(start = 8.dp, bottom = 16.dp)
         )
 
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -45,7 +44,6 @@ fun MatchupSection(title: String, matchups: List<Matchup>) {
                 Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 8.dp, vertical = 0.dp),
-
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 TableHeaderCell("Proj. Pts", weight = 1.2f)
@@ -55,14 +53,21 @@ fun MatchupSection(title: String, matchups: List<Matchup>) {
                 TableHeaderCell("Total", weight = 1.2f)
             }
             Divider(color = Color(0xFF232323), thickness = 1.dp, modifier = Modifier.padding(bottom = 2.dp))
-            matchups.forEach { matchup ->
+            matchups.forEachIndexed { index, matchup ->
                 MatchupCard(matchup)
-                Spacer(Modifier.height(8.dp))
+                if (index < matchups.lastIndex) {
+                    Divider(
+                        color = Color(0xFF18181C),
+                        thickness = 1.dp,
+                        modifier = Modifier.padding(horizontal = 0.dp)
+                    )
+                }
+
             }
+
         }
     }
 }
-
 
 @Composable
 fun RowScope.TableHeaderCell(
@@ -81,7 +86,6 @@ fun RowScope.TableHeaderCell(
     )
 }
 
-
 @Composable
 fun MatchupCard(matchup: Matchup) {
     Card(
@@ -98,7 +102,6 @@ fun MatchupCard(matchup: Matchup) {
                         .height(46.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-
                     Text(
                         text = team.projPts,
                         color = if (idx == 0) Color(0xFF96B4EC) else Color(0xFF20FF72),
@@ -106,12 +109,11 @@ fun MatchupCard(matchup: Matchup) {
                         fontSize = 16.sp,
                         modifier = Modifier.weight(1.2f)
                     )
-
                     Row(
                         Modifier.weight(2.3f),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        // TODO: Replace icon
+
                         Icon(
                             imageVector = Icons.Default.AccountCircle,
                             contentDescription = null,
@@ -157,7 +159,6 @@ fun MatchupCard(matchup: Matchup) {
                             .padding(vertical = 4.dp, horizontal = 6.dp)
                     )
                 }
-
                 if (idx == 0) Divider(color = Color(0xFF232323), thickness = 1.dp)
             }
         }
