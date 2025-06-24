@@ -14,3 +14,7 @@ data class User(
     val state: String? = null,
     val zipCode: String? = null
 )
+data class SignInState(
+    val isSuccess: Boolean = false,
+    val error: String? = null
+)
