@@ -1,10 +1,8 @@
-package com.cme.projectcme.signup
+package com.cme.cmekotlin.signup.ui.main
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import com.cme.cmekotlin.auth.AuthRepository
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
@@ -12,6 +10,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
@@ -31,7 +31,7 @@ class SignUpViewModel @Inject constructor(
                     "username" to username,
                     "email" to email,
                     "phone" to phone,
-                    "createdAt" to Timestamp.now()
+                    "createdAt" to Timestamp.Companion.now()
                 )
                 val fsResult = runCatching {
                     firestore.collection("users").document(uid).set(userData).await()

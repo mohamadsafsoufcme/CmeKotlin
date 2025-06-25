@@ -1,6 +1,5 @@
-package com.cme.cmekotlin
+package com.cme.cmekotlin.navigation
 
-import android.content.Context
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -10,13 +9,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.cme.cmekotlin.auth.UserSessionManager
+import com.cme.cmekotlin.signin.data.AppManager
 import com.cme.cmekotlin.homeview.LeagueHomeScreen
-import com.cme.cmekotlin.signin.forgotpassword.ForgotPasswordView
-import com.cme.projectcme.signin.SigninView
-import com.cme.projectcme.signup.SignUpView
-import com.cme.projectcme.signup.VerificationView
-import kotlinx.coroutines.launch
+import com.cme.cmekotlin.signin.ui.forgetpassword.ForgotPasswordView
+import com.cme.projectcme.signin.ui.main.SigninView
+import com.cme.projectcme.signup.ui.main.SignUpView
+import com.cme.projectcme.signup.ui.verification.VerificationView
+
 
 @Composable
 fun AppNavigator() {
@@ -24,7 +23,7 @@ fun AppNavigator() {
     val navController = rememberNavController()
     var isLoggedIn by remember { mutableStateOf<Boolean?>(null) }
     LaunchedEffect(Unit) {
-        isLoggedIn = UserSessionManager(context).isLoggedIn()
+        isLoggedIn = AppManager(context).isLoggedIn()
     }
 
     if (isLoggedIn == null) return

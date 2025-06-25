@@ -1,4 +1,4 @@
-package com.cme.projectcme.signup
+package com.cme.cmekotlin.signup.ui.main
 
 data class SignUpState(
     val isLoading: Boolean = false,

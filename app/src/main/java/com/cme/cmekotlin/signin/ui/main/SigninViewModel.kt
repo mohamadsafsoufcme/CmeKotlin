@@ -1,15 +1,13 @@
-package com.cme.projectcme.signin
+package com.cme.cmekotlin.signin.ui.main
 
 import android.app.Application
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cme.cmekotlin.signin.data.AppManager
 import com.cme.cmekotlin.auth.AuthRepository
-import com.cme.cmekotlin.auth.UserSessionManager
 import com.cme.cmekotlin.model.SignInState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,13 +15,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
 class SigninViewModel @Inject constructor(
     application: Application,
     private val authRepository: AuthRepository
 ) : AndroidViewModel(application) {
-    private val session = UserSessionManager(application)
+    private val session = AppManager(application)
     private val _signInState = MutableStateFlow(SignInState())
     val signInState: StateFlow<SignInState> = _signInState
     var email by mutableStateOf("")

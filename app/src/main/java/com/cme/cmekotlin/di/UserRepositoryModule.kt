@@ -1,7 +1,7 @@
 package com.cme.cmekotlin.di
 
-import com.cme.cmekotlin.auth.UserRepository
-import com.cme.cmekotlin.auth.FirebaseUserRepository
+import com.cme.cmekotlin.signup.data.repo.UserRepository
+import com.cme.cmekotlin.signup.data.repo.FirebaseUserRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

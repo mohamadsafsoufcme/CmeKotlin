@@ -1,4 +1,4 @@
-package com.cme.cmekotlin.signin.forgotpassword
+package com.cme.cmekotlin.signin.ui.forgotpassword
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

@@ -1,6 +1,5 @@
-package com.cme.projectcme.signin
+package com.cme.projectcme.signin.ui.main
 
-import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -15,8 +14,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.cme.cmekotlin.auth.UserSessionManager
+import com.cme.cmekotlin.signin.data.AppManager
 import com.cme.cmekotlin.components.CustomInputField
+import com.cme.cmekotlin.signin.ui.main.SigninViewModel
 import com.cme.cmekotlin.ui.theme.softGreen
 import kotlinx.coroutines.launch
 
@@ -38,7 +38,7 @@ fun SigninView(
 
     LaunchedEffect(signInState.isSuccess) {
         if (signInState.isSuccess) {
-            scope.launch { UserSessionManager(context).saveSession(email) }
+            scope.launch { AppManager(context).saveSession(email) }
             onSignInSuccess()
         }
     }

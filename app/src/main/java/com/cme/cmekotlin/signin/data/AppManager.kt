@@ -1,16 +1,15 @@
-package com.cme.cmekotlin.auth
+package com.cme.cmekotlin.signin.data
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import androidx.datastore.preferences.preferencesDataStore
 
 private val Context.dataStore by preferencesDataStore("user_prefs")
-
-class UserSessionManager(private val context: Context) {
+class AppManager(private val context: Context) {
     companion object {
         private val KEY_IS_LOGGED_IN = booleanPreferencesKey("is_logged_in")
         private val KEY_EMAIL = stringPreferencesKey("user_email")
