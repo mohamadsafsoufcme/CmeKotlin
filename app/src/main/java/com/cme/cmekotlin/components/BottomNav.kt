@@ -1,42 +1,41 @@
 package com.cme.cmekotlin.components
 
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.AttachMoney
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Store
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 
 @Composable
 fun BottomNavBar() {
-    NavigationBar(
-        containerColor = Color.Black,
-        contentColor = Color.White
-    ) {
-        NavigationBarItem(selected = true, onClick = {}, icon = {
-            Icon(Icons.Filled.Home, contentDescription = "Home")
-        }, label = { Text("Home") })
-
-        NavigationBarItem(selected = false, onClick = {}, icon = {
-            Icon(Icons.Filled.Store, contentDescription = "Store")
-        }, label = { Text("Store") })
-
-        NavigationBarItem(selected = false, onClick = {}, icon = {
-            Icon(Icons.Filled.AttachMoney, contentDescription = "My Entries")
-        }, label = { Text("My Entries") })
-
-        NavigationBarItem(selected = false, onClick = {}, icon = {
-            Icon(Icons.Filled.Star, contentDescription = "Rewards")
-        }, label = { Text("Rewards") })
-
-        NavigationBarItem(selected = false, onClick = {}, icon = {
-            Icon(Icons.Filled.AccountCircle, contentDescription = "Account")
-        }, label = { Text("My Account") })
+    val items = listOf(
+        Pair(Icons.Filled.Home, "Home"),
+        Pair(Icons.Filled.Store, "Store"),
+        Pair(Icons.Filled.AttachMoney, "My Entries"),
+        Pair(Icons.Filled.Star, "Rewards"),
+        Pair(Icons.Filled.AccountCircle, "My Account")
+    )
+    var selectedIndex by remember { mutableStateOf(0) }
+    NavigationBar(containerColor = Color.Black) {
+        items.forEachIndexed { index, item ->
+            NavigationBarItem(
+                selected = index == selectedIndex,
+                onClick = { selectedIndex = index },
+                icon = { Icon(item.first, contentDescription = item.second) },
+                label = { Text(item.second) },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = Color(0xFF20FF72),
+                    selectedTextColor = Color(0xFF20FF72),
+                    indicatorColor = Color.Black,
+                    unselectedIconColor = Color(0xFF8B8B8B),
+                    unselectedTextColor = Color(0xFF8B8B8B)
+                )
+            )
+        }
     }
 }
+//End of file

@@ -8,11 +8,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.cme.cmekotlin.homeview.LeagueHomeScreen
 import com.cme.cmekotlin.signin.forgotpassword.ForgotPasswordView
 import com.cme.projectcme.signin.SigninView
 import com.cme.projectcme.signup.SignUpView
 import com.cme.projectcme.signup.VerificationView
-import com.cme.cmekotlin.HomeView.LeagueHomeScreen
+
 
 @Composable
 fun AppNavigator() {
@@ -77,4 +78,4 @@ fun AppNavigator() {
 
     }
 }
-
+//End of file

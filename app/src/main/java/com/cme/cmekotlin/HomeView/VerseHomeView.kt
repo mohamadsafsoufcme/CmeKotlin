@@ -1,37 +1,31 @@
-package com.cme.cmekotlin.HomeView
+package com.cme.cmekotlin.homeview
 
-import MatchupSection
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.cme.cmekotlin.components.*
 import com.cme.cmekotlin.model.LeagueInfo
 import com.cme.cmekotlin.model.Matchup
 import com.cme.cmekotlin.model.TeamStats
 
-val sampleLeagues = listOf(
-    LeagueInfo("VerseFantasyCME", "2/4 teams synced", "0 mins ago"),
-    LeagueInfo("AnotherLeague", "4/4 teams synced", "3 hours ago"),
-    LeagueInfo("NFL Friends", "1/4 teams synced", "10 hours ago"),
+private val sampleLeagues = listOf(
+    LeagueInfo("VerseFantasyCME", "2/4 teams synced", "0 mins ago")
 )
-val sampleMatchups = listOf(
+
+private val sampleMatchups = listOf(
     Matchup(
         teams = listOf(
-            TeamStats("112.5", "Bears", "+350", "+5.5", "44.5"),
-            TeamStats("124.3", "Giants", "-475", "-5.5", "44.5")
-        )
-    ),
-    Matchup(
-        teams = listOf(
-            TeamStats("110.0", "Eagles", "+120", "+3.0", "41.0"),
-            TeamStats("115.8", "Cowboys", "-150", "-3.0", "41.0")
+            TeamStats("123.7", "JoeDroid's Team", "+104", "+1.1", "O 248.5"),
+            TeamStats("124.8", "danzimm's Team", "-110", "-1.1", "U 248.5")
         )
     )
 )
@@ -43,39 +37,44 @@ fun LeagueHomeScreen() {
             .fillMaxSize()
             .background(Color.Black)
     ) {
-        Spacer(Modifier.height(8.dp))
-
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp)
-                .clip(RoundedCornerShape(32.dp))
+                .clip(RoundedCornerShape(bottomStart = 28.dp, bottomEnd = 28.dp))
                 .background(
                     brush = Brush.verticalGradient(
-                        colors = listOf(
-                            Color(0xFF191E25),
-                            Color(0xFF222A33),
-                            Color(0xFF18181C)
+                        listOf(
+                            Color(0xFF14191F),
+                            Color(0xFF0F141A),
+                            Color(0xFF0A0E12)
                         )
-                    ),
-                    shape = RoundedCornerShape(32.dp)
+                    )
                 )
-                .padding(vertical = 20.dp, horizontal = 12.dp)
         ) {
-            Column {
+            Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 20.dp)) {
                 CoinHeader(balance = "3,000")
-                Spacer(modifier = Modifier.height(12.dp))
-                LeagueList(leagues = sampleLeagues, onAddLeague = { /* TODO: handle add */ })
+                Spacer(Modifier.height(16.dp))
+                LeagueList(leagues = sampleLeagues)
+                Spacer(Modifier.height(4.dp))
+                MatchupHeader()
             }
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        MatchupSection(title = "Matchups (Week 8)", matchups = sampleMatchups)
-
-        Spacer(modifier = Modifier.weight(1f))
-
+        MatchupTable(matchups = sampleMatchups)
+        Spacer(Modifier.weight(1f))
         BottomNavBar()
     }
 }
 
+@Composable
+fun RowScope.TableHeaderCell(text: String, weight: Float) {
+    Text(
+        text = text,
+        color = Color(0xFFB5B5B5),
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
+        modifier = Modifier
+            .weight(weight)
+            .padding(vertical = 6.dp, horizontal = 2.dp)
+    )
+}
+// End of file
