@@ -84,7 +84,7 @@ fun RowScope.TableHeaderCell(text: String, weight: Float) {
         text = text,
         color = Color(0xFFB5B5B5),
         fontWeight = FontWeight.Medium,
-        fontSize = 12.sp,
+        fontSize = 11.sp,
         fontFamily = InterFont,
         modifier = Modifier
             .weight(weight)
@@ -136,7 +136,7 @@ fun MatchupCard(matchup: Matchup) {
                 VerticalDivider()
                 MoneySpreadTotalCell(team.total, Modifier.weight(1.2f))
             }
-            if (idx == 0) Divider(color = Color.Black, thickness = 1.dp)
+            if (idx == 0) HorizontalDivider(color = Color.Black, thickness = 1.dp)
         }
     }
 }

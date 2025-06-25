@@ -59,7 +59,9 @@ fun LeagueHomeScreen() {
                 MatchupHeader()
             }
         }
-        MatchupTable(matchups = sampleMatchups)
+        Column(modifier = Modifier.padding(horizontal = 16.dp)) {
+            MatchupTable(matchups = sampleMatchups)
+        }
         Spacer(Modifier.weight(1f))
         BottomNavBar()
     }
@@ -77,4 +79,5 @@ fun RowScope.TableHeaderCell(text: String, weight: Float) {
             .padding(vertical = 6.dp, horizontal = 2.dp)
     )
 }
+
 // End of file
