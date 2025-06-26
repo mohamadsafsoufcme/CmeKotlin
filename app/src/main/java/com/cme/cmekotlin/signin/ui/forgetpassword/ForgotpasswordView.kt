@@ -1,4 +1,4 @@
-package com.cme.cmekotlin.signin.forgotpassword
+package com.cme.cmekotlin.signin.ui.forgetpassword
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.cme.cmekotlin.signin.ui.forgotpassword.ForgotPasswordViewModel
 
 @Composable
 fun ForgotPasswordView(

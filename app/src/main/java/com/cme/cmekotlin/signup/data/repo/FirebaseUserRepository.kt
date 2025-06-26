@@ -1,4 +1,4 @@
-package com.cme.cmekotlin.auth
+package com.cme.cmekotlin.signup.data.repo
 
 import com.cme.cmekotlin.model.StateConfig
 import com.google.firebase.auth.FirebaseAuth

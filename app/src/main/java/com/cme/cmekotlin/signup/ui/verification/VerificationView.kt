@@ -1,4 +1,4 @@
-package com.cme.projectcme.signup
+package com.cme.projectcme.signup.ui.verification
 
 import android.app.DatePickerDialog
 import androidx.compose.foundation.background
@@ -13,7 +13,6 @@ import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.Verified
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,7 +26,6 @@ import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.cme.cmekotlin.components.CustomInputField
 import com.cme.cmekotlin.ui.theme.softGreen
-import com.cme.cmekotlin.model.StateConfig
 import java.util.*
 
 @Composable

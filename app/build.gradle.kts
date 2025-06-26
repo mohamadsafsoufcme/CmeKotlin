@@ -59,6 +59,7 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended")
     implementation("com.google.dagger:hilt-android:2.47")
     kapt("com.google.dagger:hilt-compiler:2.47")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.47")
     kaptAndroidTest("com.google.dagger:hilt-compiler:2.47")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
