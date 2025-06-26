@@ -8,19 +8,23 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Store
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun BottomNavBar() {
+fun BottomNavBar(modifier: Modifier = Modifier) {
     val items = listOf(
         Pair(Icons.Filled.Home, "Home"),
         Pair(Icons.Filled.Store, "Store"),
-        Pair(Icons.Filled.AttachMoney, "My Entries"),
+        Pair(Icons.Filled.AttachMoney, "Entries"),
         Pair(Icons.Filled.Star, "Rewards"),
         Pair(Icons.Filled.AccountCircle, "My Account")
     )
     var selectedIndex by remember { mutableStateOf(0) }
-    NavigationBar(containerColor = Color.Black) {
+    NavigationBar(
+        modifier = modifier,
+        containerColor = Color.Black
+    ) {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
                 selected = index == selectedIndex,
@@ -38,4 +42,3 @@ fun BottomNavBar() {
         }
     }
 }
-//End of file
