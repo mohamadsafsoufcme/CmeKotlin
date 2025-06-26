@@ -22,6 +22,7 @@ fun AppNavigator() {
     val context = LocalContext.current
     val navController = rememberNavController()
     var isLoggedIn by remember { mutableStateOf<Boolean?>(null) }
+
     LaunchedEffect(Unit) {
         isLoggedIn = AppManager(context).isLoggedIn()
     }
@@ -37,8 +38,8 @@ fun AppNavigator() {
             composable("signin") {
                 SigninView(
                     onForgotPassword = { navController.navigate("forgot_password") },
-                    onCreateAccount  = { navController.navigate("signup") },
-                    onSignInSuccess  = {
+                    onCreateAccount = { navController.navigate("signup") },
+                    onSignInSuccess = {
                         navController.navigate("home") {
                             popUpTo("signin") { inclusive = true }
                         }
@@ -47,7 +48,7 @@ fun AppNavigator() {
             }
             composable("signup") {
                 SignUpView(
-                    onSignInClick       = { navController.popBackStack() },
+                    onSignInClick = { navController.popBackStack() },
                     onCreateAccountClick = { navController.navigate("verification") }
                 )
             }
@@ -69,7 +70,7 @@ fun AppNavigator() {
                 ForgotPasswordView(onBack = { navController.popBackStack() })
             }
             composable("home") {
-                LeagueHomeScreen()
+                LeagueHomeScreen(navController = navController)
             }
         }
     }
