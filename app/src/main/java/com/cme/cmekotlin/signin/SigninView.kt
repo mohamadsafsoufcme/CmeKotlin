@@ -21,11 +21,19 @@ import com.cme.cmekotlin.ui.theme.softGreen
 fun SigninView(
     onForgotPassword: () -> Unit,
     onCreateAccount: () -> Unit,
+    onSignInSuccess: () -> Unit,
     viewModel: SigninViewModel = hiltViewModel()
 ) {
     val email by remember { derivedStateOf { viewModel.email } }
     val password by remember { derivedStateOf { viewModel.password } }
+    val signInState by viewModel.signInState.collectAsState()
     val passwordVisible by remember { derivedStateOf { viewModel.passwordVisible } }
+
+    LaunchedEffect(signInState) {
+        if (signInState.isSuccess) {
+            onSignInSuccess()
+        }
+    }
     Column(
         Modifier
             .fillMaxSize()
@@ -104,8 +112,3 @@ fun SigninView(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun LoginViewPreview() {
-    SigninView(onForgotPassword = {}, onCreateAccount = {})
-}

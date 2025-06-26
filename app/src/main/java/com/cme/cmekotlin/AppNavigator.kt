@@ -8,10 +8,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.cme.cmekotlin.homeview.LeagueHomeScreen
 import com.cme.cmekotlin.signin.forgotpassword.ForgotPasswordView
 import com.cme.projectcme.signin.SigninView
 import com.cme.projectcme.signup.SignUpView
 import com.cme.projectcme.signup.VerificationView
+
+
 @Composable
 fun AppNavigator() {
     val navController = rememberNavController()
@@ -24,14 +27,16 @@ fun AppNavigator() {
         ) {
             composable("signin") {
                 SigninView(
-                    onForgotPassword = {
-                        navController.navigate("forgot_password")
-                    },
-                    onCreateAccount = {
-                        navController.navigate("signup")
+                    onForgotPassword = { navController.navigate("forgot_password") },
+                    onCreateAccount = { navController.navigate("signup") },
+                    onSignInSuccess = {
+                        navController.navigate("home") {
+                            popUpTo("signin") { inclusive = true }
+                        }
                     }
                 )
             }
+
 
             composable("signup") {
                 SignUpView(
@@ -47,10 +52,14 @@ fun AppNavigator() {
             composable("verification") {
                 VerificationView(
                     onVerify = {
-                        // Navigate to home or dashboard
+                        navController.navigate("home") {
+                            popUpTo("signin") { inclusive = true }
+                        }
                     },
                     onSkip = {
-                        // Handle skip
+                        navController.navigate("home") {
+                            popUpTo("signin") { inclusive = true }
+                        }
                     }
                 )
             }
@@ -62,7 +71,11 @@ fun AppNavigator() {
                     }
                 )
             }
+            composable("home") {
+                LeagueHomeScreen()
+            }
         }
+
     }
 }
-
+//End of file
