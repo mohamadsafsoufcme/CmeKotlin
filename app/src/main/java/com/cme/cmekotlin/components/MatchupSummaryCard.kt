@@ -7,16 +7,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Compare
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.font.FontWeight
 
 @Composable
 fun MatchupSummaryCard(
@@ -66,7 +65,6 @@ fun MatchupSummaryCard(
                 .fillMaxWidth()
                 .padding(top = 8.dp, bottom = 4.dp)
         ) {
-
             Icon(
                 imageVector = Icons.Default.AccountCircle,
                 contentDescription = null,
@@ -81,15 +79,20 @@ fun MatchupSummaryCard(
                 fontWeight = FontWeight.Medium
             )
             Spacer(Modifier.width(8.dp))
-            LinearProgressIndicator(
-                progress = winPercent / 100f,
+            Box(
                 modifier = Modifier
                     .weight(1f)
-                    .height(6.dp)
-                    .clip(RoundedCornerShape(8.dp)),
-                color = winnerColor,
-                trackColor = Color.DarkGray
-            )
+                    .height(8.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color.Black)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .fillMaxWidth(winPercent / 100f)
+                        .background(winnerColor)
+                )
+            }
             Spacer(Modifier.width(8.dp))
             Icon(
                 imageVector = Icons.Default.AccountCircle,

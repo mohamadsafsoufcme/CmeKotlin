@@ -6,16 +6,18 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.cme.cmekotlin.homeview.VerseHomeView
+import com.example.fantasy.ui.LeagueMatchupView
 import com.cme.cmekotlin.signin.data.AppManager
-import com.cme.cmekotlin.homeview.LeagueHomeScreen
-import com.cme.cmekotlin.signin.ui.forgetpassword.ForgotPasswordView
 import com.cme.projectcme.signin.ui.main.SigninView
 import com.cme.projectcme.signup.ui.main.SignUpView
 import com.cme.projectcme.signup.ui.verification.VerificationView
-
+import com.cme.cmekotlin.signin.ui.forgetpassword.ForgotPasswordView
 
 @Composable
 fun AppNavigator() {
@@ -70,7 +72,16 @@ fun AppNavigator() {
                 ForgotPasswordView(onBack = { navController.popBackStack() })
             }
             composable("home") {
-                LeagueHomeScreen(navController = navController)
+                VerseHomeView(
+                    onLeagueClick = {
+                        navController.navigate("league_matchup")
+                    }
+                )
+            }
+            composable("league_matchup") {
+                LeagueMatchupView(
+                    onBack = { navController.popBackStack() }
+                )
             }
         }
     }

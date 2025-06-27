@@ -49,13 +49,6 @@ fun SigninView(
             .background(Color.Black)
             .padding(16.dp)
     ) {
-        if (isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center),
-                color = softGreen
-            )
-        }
-
         Column(modifier = Modifier.fillMaxSize()) {
             Spacer(modifier = Modifier.weight(1f))
             Column(
@@ -108,7 +101,7 @@ fun SigninView(
             Spacer(modifier = Modifier.weight(1f))
             Button(
                 onClick = { viewModel.signIn() },
-                enabled = email.isNotBlank() && password.isNotBlank(),
+                enabled = email.isNotBlank() && password.isNotBlank() && !isLoading,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
@@ -118,7 +111,15 @@ fun SigninView(
                     contentColor = Color.White
                 )
             ) {
-                Text(text = "Sign in")
+                if (isLoading) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(24.dp),
+                        color = Color.White,
+                        strokeWidth = 2.dp
+                    )
+                } else {
+                    Text(text = "Sign in")
+                }
             }
             Spacer(Modifier.height(12.dp))
             Row(

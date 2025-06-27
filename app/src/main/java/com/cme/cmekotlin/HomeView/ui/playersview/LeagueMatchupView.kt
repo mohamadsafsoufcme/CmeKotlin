@@ -24,11 +24,43 @@ data class PositionMatchup(
     val left: PlayerProjection,
     val right: PlayerProjection
 )
-
+val sample = listOf(
+    PositionMatchup(
+        "QB",
+        PlayerProjection("Lamar Jackson", "BAL", 20.61),
+        PlayerProjection("Jalen Hurts", "PHI", 18.59)
+    ),
+    PositionMatchup(
+        "RB",
+        PlayerProjection("Jonathan Taylor", "IND", 14.80),
+        PlayerProjection("Travis Etienne Jr.", "JAX", 0.00)
+    ),
+    PositionMatchup(
+        "RB",
+        PlayerProjection("James Conner", "ARI", 12.20),
+        PlayerProjection("Derrick Henry", "BAL", 16.38)
+    ),
+    PositionMatchup(
+        "WR",
+        PlayerProjection("CeeDee Lamb", "DAL", 16.85),
+        PlayerProjection("Mike Evans", "TB", 0.00)
+    ),
+    PositionMatchup(
+        "WR",
+        PlayerProjection("Marvin Harrison Jr.", "ARI", 12.90),
+        PlayerProjection("Ja'Marr Chase", "CIN", 17.56)
+    ),
+    PositionMatchup(
+        "TE",
+        PlayerProjection("Kyle Pitts", "ATL", 8.70),
+        PlayerProjection("Mark Andrews", "BAL", 7.05)
+    )
+)
 @Composable
 fun LeagueMatchupView(
-    matchups: List<PositionMatchup>,
+    matchups: List<PositionMatchup> = sample,
     modifier: Modifier = Modifier,
+    onBack: () -> Unit = {},
     onPlaceEntry: () -> Unit = {}
 ) {
     Box(
@@ -37,7 +69,7 @@ fun LeagueMatchupView(
             .background(Color.Black)
     ) {
         Column(Modifier.fillMaxSize()) {
-            CoinHeader(balance = "5,000", onBack = {})
+            CoinHeader(balance = "5,000", onBack = onBack)
             Spacer(Modifier.height(12.dp))
             MatchupSummaryCard(
                 homeTeamName = "JackGorelick's Team",
