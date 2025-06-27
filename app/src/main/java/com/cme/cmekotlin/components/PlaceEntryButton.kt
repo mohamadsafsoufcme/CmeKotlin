@@ -26,7 +26,7 @@ fun PlaceEntryButton(
             containerColor = Color(0xFF00D82F),
             contentColor = Color.Black
         ),
-        elevation = ButtonDefaults.buttonElevation(defaultElevation = 0.dp)
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 8.dp)
     ) {
         Text(
             text = "Place Entry",

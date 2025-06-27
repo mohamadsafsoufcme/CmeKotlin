@@ -1,6 +1,6 @@
 package com.cme.cmekotlin.di
-import com.cme.cmekotlin.signup.data.repo.VerificationModel
-import com.cme.cmekotlin.signup.data.repo.VerificationRepository
+import com.cme.cmekotlin.Verification.verification.repo.VerificationModel
+import com.cme.cmekotlin.Verification.verification.repo.VerificationRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

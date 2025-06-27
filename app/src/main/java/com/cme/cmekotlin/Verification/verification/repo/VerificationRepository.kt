@@ -1,4 +1,4 @@
-package com.cme.cmekotlin.signup.data.repo
+package com.cme.cmekotlin.Verification.verification.repo
 
 import com.cme.cmekotlin.model.StateConfig
 import com.cme.cmekotlin.network.MockVerificationApi

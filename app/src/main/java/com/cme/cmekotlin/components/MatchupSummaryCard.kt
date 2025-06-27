@@ -6,8 +6,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Compare
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
@@ -30,6 +28,10 @@ fun MatchupSummaryCard(
     awayProj: Double,
     winPercent: Int
 ) {
+    val homeWinning = homeScore >= awayScore
+    val winnerColor = if (homeWinning) Color(0xFF2AD378) else Color(0xFFFFC107)
+    val loserColor = if (homeWinning) Color(0xFFFFC107) else Color(0xFF2AD378)
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,26 +52,50 @@ fun MatchupSummaryCard(
             )
             TeamScoreBlock(awayTeamName, awayScore, awayProj, Alignment.End)
         }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(1.dp)
+                .background(Color(0xFF232323))
+        )
         Spacer(Modifier.height(12.dp))
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+        Spacer(modifier = Modifier.height(8.dp))
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp, bottom = 4.dp)
+        ) {
+
             Icon(
-                imageVector = Icons.Default.KeyboardArrowLeft,
+                imageVector = Icons.Default.AccountCircle,
                 contentDescription = null,
-                tint = Color(0xFF2AD378)
+                tint = winnerColor,
+                modifier = Modifier.size(24.dp)
             )
+            Spacer(Modifier.width(4.dp))
+            Text(
+                text = "$winPercent%",
+                color = Color.White,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Medium
+            )
+            Spacer(Modifier.width(8.dp))
             LinearProgressIndicator(
                 progress = winPercent / 100f,
                 modifier = Modifier
                     .weight(1f)
                     .height(6.dp)
                     .clip(RoundedCornerShape(8.dp)),
-                color = Color(0xFF2AD378),
+                color = winnerColor,
                 trackColor = Color.DarkGray
             )
+            Spacer(Modifier.width(8.dp))
             Icon(
-                imageVector = Icons.Default.KeyboardArrowRight,
+                imageVector = Icons.Default.AccountCircle,
                 contentDescription = null,
-                tint = Color(0xFFFFC107)
+                tint = loserColor,
+                modifier = Modifier.size(24.dp)
             )
         }
     }

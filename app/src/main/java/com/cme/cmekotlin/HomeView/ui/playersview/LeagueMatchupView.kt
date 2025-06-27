@@ -4,12 +4,19 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import com.cme.cmekotlin.components.*
 
 data class PositionMatchup(
@@ -30,7 +37,7 @@ fun LeagueMatchupView(
             .background(Color.Black)
     ) {
         Column(Modifier.fillMaxSize()) {
-            CoinHeader(balance = "5,000")
+            CoinHeader(balance = "5,000", onBack = {})
             Spacer(Modifier.height(12.dp))
             MatchupSummaryCard(
                 homeTeamName = "JackGorelick's Team",
@@ -61,7 +68,7 @@ fun LeagueMatchupView(
         PlaceEntryButton(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 56.dp),
+                .padding(bottom = 86.dp),
             onClick = onPlaceEntry
         )
     }
