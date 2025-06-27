@@ -1,14 +1,14 @@
-// signup/VerificationViewModel.kt
 package com.cme.projectcme.signup.ui.verification
 
+import android.widget.Toast
+import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cme.cmekotlin.model.StateConfig
-import com.cme.cmekotlin.signup.data.repo.UserRepository
-
+import com.cme.cmekotlin.signup.data.repo.VerificationModel
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class VerificationViewModel @Inject constructor(
-    private val userRepo: UserRepository,
+    private val userRepo: VerificationModel,
     private val auth: FirebaseAuth
 ) : ViewModel() {
 
@@ -86,6 +86,7 @@ class VerificationViewModel @Inject constructor(
             )
             runCatching {
                 userRepo.submitVerification(uid, data)
+                userRepo.markUserAsVerified(uid).getOrThrow()
             }.onSuccess {
                 success = true
             }.onFailure {

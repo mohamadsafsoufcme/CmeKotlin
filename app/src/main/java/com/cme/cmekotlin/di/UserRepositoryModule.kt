@@ -1,7 +1,6 @@
 package com.cme.cmekotlin.di
-
-import com.cme.cmekotlin.signup.data.repo.UserRepository
-import com.cme.cmekotlin.signup.data.repo.FirebaseUserRepository
+import com.cme.cmekotlin.signup.data.repo.VerificationModel
+import com.cme.cmekotlin.signup.data.repo.VerificationRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,6 +14,6 @@ abstract class UserRepositoryModule {
     @Binds
     @Singleton
     abstract fun bindUserRepository(
-        impl: FirebaseUserRepository
-    ): UserRepository
+        impl: VerificationRepository
+    ): VerificationModel
 }

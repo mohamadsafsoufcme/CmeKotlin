@@ -3,15 +3,16 @@ package com.cme.cmekotlin.homeview
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.cme.cmekotlin.components.*
 import com.cme.cmekotlin.model.LeagueInfo
 import com.cme.cmekotlin.model.Matchup
@@ -31,7 +32,7 @@ private val sampleMatchups = listOf(
 )
 
 @Composable
-fun LeagueHomeScreen() {
+fun LeagueHomeScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -59,25 +60,12 @@ fun LeagueHomeScreen() {
                 MatchupHeader()
             }
         }
+
         Column(modifier = Modifier.padding(horizontal = 16.dp)) {
             MatchupTable(matchups = sampleMatchups)
         }
+
         Spacer(Modifier.weight(1f))
         BottomNavBar()
     }
 }
-
-@Composable
-fun RowScope.TableHeaderCell(text: String, weight: Float) {
-    Text(
-        text = text,
-        color = Color(0xFFB5B5B5),
-        fontWeight = FontWeight.Medium,
-        fontSize = 12.sp,
-        modifier = Modifier
-            .weight(weight)
-            .padding(vertical = 6.dp, horizontal = 2.dp)
-    )
-}
-
-// End of file
