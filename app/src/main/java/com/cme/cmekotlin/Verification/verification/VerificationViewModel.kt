@@ -8,7 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cme.cmekotlin.model.StateConfig
-import com.cme.cmekotlin.signup.data.repo.VerificationModel
+import com.cme.cmekotlin.Verification.verification.repo.VerificationModel
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

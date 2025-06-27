@@ -23,7 +23,13 @@ import androidx.compose.ui.unit.sp
 import com.cme.cmekotlin.model.LeagueInfo
 
 @Composable
-fun LeagueCard(name: String, syncedStatus: String, time: String, modifier: Modifier = Modifier) {
+fun LeagueCard(
+    name: String,
+    syncedStatus: String,
+    time: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
+) {
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val cardWidth = screenWidth - 48.dp
     Card(
@@ -33,6 +39,7 @@ fun LeagueCard(name: String, syncedStatus: String, time: String, modifier: Modif
         modifier = modifier
             .width(cardWidth)
             .height(96.dp)
+            .clickable(onClick = onClick)
     ) {
         Row(
             modifier = Modifier
@@ -109,7 +116,11 @@ fun AddNewLeagueCard(onClick: () -> Unit = {}, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun LeagueList(leagues: List<LeagueInfo>, onAddLeague: () -> Unit = {}) {
+fun LeagueList(
+    leagues: List<LeagueInfo>,
+    onAddLeague: () -> Unit = {},
+    onLeagueClick: () -> Unit = {}
+) {
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
@@ -121,7 +132,8 @@ fun LeagueList(leagues: List<LeagueInfo>, onAddLeague: () -> Unit = {}) {
                 name = league.name,
                 syncedStatus = league.syncedStatus,
                 time = league.time,
-                modifier = Modifier.padding(end = 16.dp)
+                modifier = Modifier.padding(end = 16.dp),
+                onClick = onLeagueClick
             )
         }
         item {
@@ -132,4 +144,3 @@ fun LeagueList(leagues: List<LeagueInfo>, onAddLeague: () -> Unit = {}) {
         }
     }
 }
-//End of file

@@ -3,16 +3,12 @@ package com.cme.cmekotlin.homeview
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.cme.cmekotlin.components.*
 import com.cme.cmekotlin.model.LeagueInfo
 import com.cme.cmekotlin.model.Matchup
@@ -32,7 +28,7 @@ private val sampleMatchups = listOf(
 )
 
 @Composable
-fun LeagueHomeScreen(navController: NavController) {
+fun VerseHomeView(onLeagueClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -55,7 +51,7 @@ fun LeagueHomeScreen(navController: NavController) {
             Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 20.dp)) {
                 CoinHeader(balance = "3,000")
                 Spacer(Modifier.height(16.dp))
-                LeagueList(leagues = sampleLeagues)
+                LeagueList(leagues = sampleLeagues, onLeagueClick = onLeagueClick)
                 Spacer(Modifier.height(4.dp))
                 MatchupHeader()
             }
